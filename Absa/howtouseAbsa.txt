@@ -1,0 +1,8 @@
+# Direct mode (same as before)
+python absa.py -u https://api.bank.com --phase recon
+
+# Interactive mode (NEW — no args needed)
+python absa.py
+
+# With all options
+python absa.py -u https://api.bank.com --phase all --proxy socks5://127.0.0.1:1080 -v --output results.json --pdf report.pdf

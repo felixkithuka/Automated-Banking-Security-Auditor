@@ -1,0 +1,2 @@
+"""ABSA Reconnaissance Package — Subdomain enumeration, fingerprinting, spidering."""
+"""ABSA Reconnaissance — Subdomain enumeration, DNS deep analysis, fingerprinting, spidering, infrastructure scanning, threat intelligence."""

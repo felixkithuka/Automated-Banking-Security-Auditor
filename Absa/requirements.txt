@@ -1,0 +1,39 @@
+# ==========================================================
+# Absa Security Testing Framework - Core Dependencies
+# ==========================================================
+
+# --- Async HTTP Clients & TLS Fingerprinting ---
+# curl_cffi is MANDATORY for stealth. Standard httpx/requests have static
+# JA3/JA4 fingerprints that are instantly blocked by Cloudflare/Akamai.
+curl_cffi>=0.6.0
+httpx[http2]>=0.27.0
+
+# --- Data Validation & Configuration ---
+# Pydantic V2 for strict type checking, serialization, and settings management
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# --- Async Utilities ---
+uvloop>=0.19.0; sys_platform != 'win32'  # Fast asyncio event loop (Linux/macOS only)
+
+# --- HTML & XML Parsing (For WAF block page analysis) ---
+beautifulsoup4>=4.12.0
+lxml>=5.0.0
+
+# --- Terminal Interface & Logging ---
+rich>=13.7.0       # For beautiful console output, tables, and progress bars
+loguru>=0.7.0      # For superior, structured logging
+
+# --- Network Utilities ---
+ipaddress>=1.0.23  # (Stdlib, but listed if custom extensions needed)
+# Note: socket, struct, ssl are Python stdlib and require no pip install
+
+# --- Cryptographic Helpers (For payload encoding modules) ---
+# (Python stdlib `hashlib`, `base64`, `hmac` are usually sufficient,
+# but pycryptodome is useful if raw complex cipher manipulation is needed)
+pycryptodome>=3.19.0
+
+# --- Development & Testing (Optional but recommended) ---
+# pytest>=8.0.0
+# pytest-asyncio>=0.23.0
+# ruff>=0.1.0

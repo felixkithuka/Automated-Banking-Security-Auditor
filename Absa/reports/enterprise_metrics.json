@@ -1,0 +1,203 @@
+{
+    "target": "https://99.222.139.34.bc.googleusercontent.com",
+    "timestamp": "2026-04-28T09:44:08.966988",
+    "metrics": {
+        "risk_score": 34.0,
+        "status": "High Risk",
+        "total_vulnerabilities": 8,
+        "breakdown": {
+            "CRITICAL": 0,
+            "HIGH": 6,
+            "MEDIUM": 2,
+            "LOW": 0,
+            "INFO": 0
+        },
+        "exploitable_zero_days": 0,
+        "remediation_effort_days": 12
+    },
+    "jira_tickets": [
+        {
+            "project": "SEC",
+            "summary": "[ABSA] Origin IP Exposed: 34.139.222.99",
+            "description": "The real origin IP 34.139.222.99 was discovered. This IP is not protected by the CDN and is directly reachable.\n\n**Evidence:**\n\n\n**Fix:**\nRestrict origin access via firewall to only accept traffic from CDN edge IPs.\n\n**Code Fix:**\n```# AWS Security Group:\naws ec2 authorize-security-group-ingress --group-id sg-xxx --protocol tcp --port 443 --cidr 173.245.48.0/20```",
+            "issuetype": {
+                "name": "Bug"
+            },
+            "priority": {
+                "name": "Medium"
+            },
+            "labels": [
+                "security",
+                "absa",
+                "vulnerability"
+            ],
+            "components": [
+                {
+                    "name": "Security Remediation"
+                }
+            ]
+        },
+        {
+            "project": "SEC",
+            "summary": "[ABSA] Exposed Service: SSH on 34.139.222.99:22",
+            "description": "Port 22 (SSH) is open. Exposed management/database services are high-risk for banking infrastructure.\n\n**Evidence:**\n\n\n**Fix:**\nRestrict SSH access to internal IP ranges via firewall. Use VPN.\n\n**Code Fix:**\n```iptables -A INPUT -p tcp --dport 22 -s 10.0.0.0/24 -j ACCEPT\niptables -A INPUT -p tcp --dport 22 -j DROP```",
+            "issuetype": {
+                "name": "Bug"
+            },
+            "priority": {
+                "name": "High"
+            },
+            "labels": [
+                "security",
+                "absa",
+                "data_exposure"
+            ],
+            "components": [
+                {
+                    "name": "Security Remediation"
+                }
+            ]
+        },
+        {
+            "project": "SEC",
+            "summary": "[ABSA] Exposed Service: Telnet on 34.139.222.99:23",
+            "description": "Port 23 (Telnet) is open. Exposed management/database services are high-risk for banking infrastructure.\n\n**Evidence:**\n\n\n**Fix:**\nRestrict Telnet access to internal IP ranges via firewall. Use VPN.\n\n**Code Fix:**\n```iptables -A INPUT -p tcp --dport 23 -s 10.0.0.0/24 -j ACCEPT\niptables -A INPUT -p tcp --dport 23 -j DROP```",
+            "issuetype": {
+                "name": "Bug"
+            },
+            "priority": {
+                "name": "Medium"
+            },
+            "labels": [
+                "security",
+                "absa",
+                "default"
+            ],
+            "components": [
+                {
+                    "name": "Security Remediation"
+                }
+            ]
+        },
+        {
+            "project": "SEC",
+            "summary": "[ABSA] Exposed Service: MSSQL on 34.139.222.99:1433",
+            "description": "Port 1433 (MSSQL) is open. Exposed management/database services are high-risk for banking infrastructure.\n\n**Evidence:**\n\n\n**Fix:**\nRestrict MSSQL access to internal IP ranges via firewall. Use VPN.\n\n**Code Fix:**\n```iptables -A INPUT -p tcp --dport 1433 -s 10.0.0.0/24 -j ACCEPT\niptables -A INPUT -p tcp --dport 1433 -j DROP```",
+            "issuetype": {
+                "name": "Bug"
+            },
+            "priority": {
+                "name": "High"
+            },
+            "labels": [
+                "security",
+                "absa",
+                "data_exposure"
+            ],
+            "components": [
+                {
+                    "name": "Security Remediation"
+                }
+            ]
+        },
+        {
+            "project": "SEC",
+            "summary": "[ABSA] Exposed Service: RDP on 34.139.222.99:3389",
+            "description": "Port 3389 (RDP) is open. Exposed management/database services are high-risk for banking infrastructure.\n\n**Evidence:**\n\n\n**Fix:**\nRestrict RDP access to internal IP ranges via firewall. Use VPN.\n\n**Code Fix:**\n```iptables -A INPUT -p tcp --dport 3389 -s 10.0.0.0/24 -j ACCEPT\niptables -A INPUT -p tcp --dport 3389 -j DROP```",
+            "issuetype": {
+                "name": "Bug"
+            },
+            "priority": {
+                "name": "High"
+            },
+            "labels": [
+                "security",
+                "absa",
+                "data_exposure"
+            ],
+            "components": [
+                {
+                    "name": "Security Remediation"
+                }
+            ]
+        },
+        {
+            "project": "SEC",
+            "summary": "[ABSA] Exposed Service: Jenkins on 34.139.222.99:19000",
+            "description": "Port 19000 (Jenkins) is open. Exposed management/database services are high-risk for banking infrastructure.\n\n**Evidence:**\n\n\n**Fix:**\nRestrict Jenkins access to internal IP ranges via firewall. Use VPN.\n\n**Code Fix:**\n```iptables -A INPUT -p tcp --dport 19000 -s 10.0.0.0/24 -j ACCEPT\niptables -A INPUT -p tcp --dport 19000 -j DROP```",
+            "issuetype": {
+                "name": "Bug"
+            },
+            "priority": {
+                "name": "High"
+            },
+            "labels": [
+                "security",
+                "absa",
+                "data_exposure"
+            ],
+            "components": [
+                {
+                    "name": "Security Remediation"
+                }
+            ]
+        },
+        {
+            "project": "SEC",
+            "summary": "[ABSA] Exposed Service: Webmin on 34.139.222.99:10080",
+            "description": "Port 10080 (Webmin) is open. Exposed management/database services are high-risk for banking infrastructure.\n\n**Evidence:**\n\n\n**Fix:**\nRestrict Webmin access to internal IP ranges via firewall. Use VPN.\n\n**Code Fix:**\n```iptables -A INPUT -p tcp --dport 10080 -s 10.0.0.0/24 -j ACCEPT\niptables -A INPUT -p tcp --dport 10080 -j DROP```",
+            "issuetype": {
+                "name": "Bug"
+            },
+            "priority": {
+                "name": "High"
+            },
+            "labels": [
+                "security",
+                "absa",
+                "data_exposure"
+            ],
+            "components": [
+                {
+                    "name": "Security Remediation"
+                }
+            ]
+        },
+        {
+            "project": "SEC",
+            "summary": "[ABSA] Exposed Service: MySQL on 34.139.222.99:3306",
+            "description": "Port 3306 (MySQL) is open. Exposed management/database services are high-risk for banking infrastructure.\n\n**Evidence:**\n\n\n**Fix:**\nRestrict MySQL access to internal IP ranges via firewall. Use VPN.\n\n**Code Fix:**\n```iptables -A INPUT -p tcp --dport 3306 -s 10.0.0.0/24 -j ACCEPT\niptables -A INPUT -p tcp --dport 3306 -j DROP```",
+            "issuetype": {
+                "name": "Bug"
+            },
+            "priority": {
+                "name": "High"
+            },
+            "labels": [
+                "security",
+                "absa",
+                "data_exposure"
+            ],
+            "components": [
+                {
+                    "name": "Security Remediation"
+                }
+            ]
+        }
+    ],
+    "remediation_roadmap": {
+        "Phase 1: Immediate Critical Fixes (0-3 Days)": [],
+        "Phase 2: High Priority Hardening (1-2 Weeks)": [
+            "[CWE-284] Exposed Service: SSH on 34.139.222.99:22 - 34.139.222.99:22",
+            "[CWE-284] Exposed Service: MSSQL on 34.139.222.99:1433 - 34.139.222.99:1433",
+            "[CWE-284] Exposed Service: RDP on 34.139.222.99:3389 - 34.139.222.99:3389",
+            "[CWE-284] Exposed Service: Jenkins on 34.139.222.99:19000 - 34.139.222.99:19000",
+            "[CWE-284] Exposed Service: Webmin on 34.139.222.99:10080 - 34.139.222.99:10080",
+            "[CWE-284] Exposed Service: MySQL on 34.139.222.99:3306 - 34.139.222.99:3306"
+        ],
+        "Phase 3: Systemic Architecture Changes (1 Month+)": [
+            "[CWE-200] Origin IP Exposed: 34.139.222.99 - https://99.222.139.34.bc.googleusercontent.com",
+            "[CWE-284] Exposed Service: Telnet on 34.139.222.99:23 - 34.139.222.99:23"
+        ]
+    }
+}

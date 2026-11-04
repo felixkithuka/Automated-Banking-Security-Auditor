@@ -1,0 +1,1 @@
+"""ABSA Reporting — Report data assembly, PDF generation with charts."""
